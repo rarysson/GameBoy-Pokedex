@@ -1,0 +1,29 @@
+.menu-btn-container {
+    position: absolute;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    transform: rotate(-27deg);
+}
+
+button {
+    width: 50px;
+    height: 10px;
+    background-color: #74737b;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 0 0 4px rgba(125, 125, 125, 0.25);
+}
+
+button:active {
+    background-color: #606063;
+}
+
+p {
+    font-family: sans-serif;
+    font-weight: bolder;
+    font-size: 13px;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-top: 5px;
+}

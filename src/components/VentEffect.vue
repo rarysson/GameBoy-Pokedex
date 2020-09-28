@@ -30,7 +30,7 @@ export default {
   width: 7px;
   height: 47px;
   border-radius: 10px;
-  background-color: #8a8787;
+  background-color: #9e9d9d;
 }
 
 .vent-bar::before,
