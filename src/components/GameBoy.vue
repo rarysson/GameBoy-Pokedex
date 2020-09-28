@@ -1,5 +1,7 @@
 <template>
-  <h1>Game Boy Pokedex</h1>
+  <div class="gameboy">
+    <slot />
+  </div>
 </template>
 
 <script>
@@ -9,7 +11,12 @@ export default {
 </script>
 
 <style scoped>
-h1 {
-  text-align: center;
+.gameboy {
+  position: relative;
+  width: 375px;
+  height: 600px;
+  border-radius: 15px;
+  border-bottom-right-radius: 75px;
+  background-color: #c0bdb8;
 }
 </style>

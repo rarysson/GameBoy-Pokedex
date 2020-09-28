@@ -86,7 +86,6 @@ module.exports = {
         "prefer-rest-params": "error",
         "prefer-spread": "error",
         "prefer-template": "error",
-        "vue/html-self-closing": ["error", { html: { void: "any" } }],
         "vue/require-default-prop": "off",
         "vue/require-prop-types": "off",
         "vue/component-tags-order": [
