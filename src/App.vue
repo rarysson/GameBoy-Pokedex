@@ -1,10 +1,9 @@
 <template>
   <div id="app">
     <game-boy>
+      <d-pad />
       <action-btns />
-
       <menu-btns />
-
       <vent-effect />
     </game-boy>
   </div>
@@ -12,18 +11,20 @@
 
 <script>
 import GameBoy from "./components/GameBoy";
-import VentEffect from "./components/VentEffect";
+import DPad from "./components/DPad";
 import ActionBtns from "./components/ActionBtns";
 import MenuBtns from "./components/MenuBtns";
+import VentEffect from "./components/VentEffect";
 
 export default {
   name: "App",
 
   components: {
     GameBoy,
-    VentEffect,
+    DPad,
     ActionBtns,
-    MenuBtns
+    MenuBtns,
+    VentEffect
   }
 };
 </script>

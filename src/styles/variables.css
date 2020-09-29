@@ -1,8 +1,12 @@
 :root {
+    --black: #242425;
+    --black-active: black;
+    --light-black: #444444;
     --blue: #101980;
     --red: #a2275e;
     --red-active: #7f0946;
     --gray: #74737b;
     --gray-active: #606063;
+    --light-gray: rgba(125, 125, 125, 0.4);
     --btn-shadow-color: rgba(125, 125, 125, 0.25);
 }
