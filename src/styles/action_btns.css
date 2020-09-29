@@ -1,0 +1,11 @@
+.action-btn {
+    width: 50px;
+    height: 50px;
+    background-color: var(--red);
+    border: none;
+    border-radius: 100%;
+}
+
+.action-btn:active {
+    background-color: var(--red-active);
+}

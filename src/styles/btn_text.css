@@ -1,0 +1,8 @@
+.btn-text {
+    font-family: sans-serif;
+    font-weight: bolder;
+    font-size: 13px;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-top: 5px;
+}

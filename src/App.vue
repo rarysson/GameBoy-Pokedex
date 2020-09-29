@@ -1,10 +1,9 @@
 <template>
   <div id="app">
     <game-boy>
-      <div class="menu-btns">
-        <select-btn />
-        <start-btn />
-      </div>
+      <action-btns />
+
+      <menu-btns />
 
       <vent-effect />
     </game-boy>
@@ -14,8 +13,8 @@
 <script>
 import GameBoy from "./components/GameBoy";
 import VentEffect from "./components/VentEffect";
-import SelectBtn from "./components/SelectBtn";
-import StartBtn from "./components/StartBtn";
+import ActionBtns from "./components/ActionBtns";
+import MenuBtns from "./components/MenuBtns";
 
 export default {
   name: "App",
@@ -23,8 +22,8 @@ export default {
   components: {
     GameBoy,
     VentEffect,
-    SelectBtn,
-    StartBtn
+    ActionBtns,
+    MenuBtns
   }
 };
 </script>
