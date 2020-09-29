@@ -17,7 +17,7 @@ export default {
   display: flex;
   bottom: 30px;
   right: 35px;
-  transform: rotate(-35deg);
+  transform: rotate(var(--rotate-value));
 }
 
 .vent-bar {
@@ -30,7 +30,7 @@ export default {
   width: 7px;
   height: 47px;
   border-radius: 10px;
-  background-color: #9e9d9d;
+  background-color: var(--light-gray);
 }
 
 .vent-bar::before,

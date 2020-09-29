@@ -27,7 +27,7 @@ export default {
   width: 130px;
   height: 60px;
   border-radius: 50px;
-  background-color: var(--btn-shadow-color);
-  transform: rotate(-27deg);
+  background-color: var(--shadow-color);
+  transform: rotate(var(--rotate-value));
 }
 </style>

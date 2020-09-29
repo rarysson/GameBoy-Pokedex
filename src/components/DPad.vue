@@ -26,7 +26,7 @@ export default {
 .d-pad-container {
   position: absolute;
   bottom: 27%;
-  left: 7%;
+  left: 30px;
   width: 90px;
   height: 90px;
   display: grid;

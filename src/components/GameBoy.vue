@@ -13,7 +13,7 @@ export default {
 <style scoped>
 .gameboy {
   position: relative;
-  width: 375px;
+  width: 380px;
   height: 600px;
   border-radius: 15px;
   border-bottom-right-radius: 75px;

@@ -8,5 +8,8 @@
     --gray: #74737b;
     --gray-active: #606063;
     --light-gray: rgba(125, 125, 125, 0.4);
-    --btn-shadow-color: rgba(125, 125, 125, 0.25);
+    --dark-gray: #555764;
+    --green: #495a14;
+    --shadow-color: rgba(125, 125, 125, 0.25);
+    --rotate-value: -27deg;
 }

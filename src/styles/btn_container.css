@@ -3,5 +3,5 @@
     display: inline-flex;
     flex-direction: column;
     align-items: center;
-    transform: rotate(-27deg);
+    transform: rotate(var(--rotate-value));
 }

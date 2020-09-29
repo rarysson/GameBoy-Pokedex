@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <game-boy>
+      <screen />
       <d-pad />
       <action-btns />
       <menu-btns />
@@ -11,6 +12,7 @@
 
 <script>
 import GameBoy from "./components/GameBoy";
+import Screen from "./components/Screen";
 import DPad from "./components/DPad";
 import ActionBtns from "./components/ActionBtns";
 import MenuBtns from "./components/MenuBtns";
@@ -21,6 +23,7 @@ export default {
 
   components: {
     GameBoy,
+    Screen,
     DPad,
     ActionBtns,
     MenuBtns,
@@ -34,7 +37,7 @@ export default {
 @import url("./styles/variables.css");
 
 #app {
-  height: 100vh;
+  min-height: 100vh;
   display: grid;
   place-items: center;
   background-color: cadetblue;
