@@ -5,7 +5,7 @@
       <d-pad />
       <action-btns />
       <menu-btns />
-      <vent-effect />
+      <game-boy-details />
     </game-boy>
   </div>
 </template>
@@ -16,7 +16,7 @@ import Screen from "./components/Screen";
 import DPad from "./components/DPad";
 import ActionBtns from "./components/ActionBtns";
 import MenuBtns from "./components/MenuBtns";
-import VentEffect from "./components/VentEffect";
+import GameBoyDetails from "./components/GameBoyDetails";
 
 export default {
   name: "App",
@@ -27,7 +27,7 @@ export default {
     DPad,
     ActionBtns,
     MenuBtns,
-    VentEffect
+    GameBoyDetails
   }
 };
 </script>

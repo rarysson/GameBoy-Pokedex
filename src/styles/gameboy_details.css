@@ -1,0 +1,32 @@
+.detail-container {
+    position: absolute;
+    width: max-content;
+    padding: 1px 5px;
+    border-radius: 20px;
+    background-color: var(--light-gray);
+}
+
+.detail-container::after {
+    content: "";
+    position: absolute;
+    width: 25px;
+    background-image: linear-gradient(
+        to right,
+        var(--light-gray),
+        var(--light-gray) 26%,
+        var(--gameboy-color) 26%,
+        var(--gameboy-color) 36%,
+        var(--light-gray) 36%,
+        var(--light-gray) 62%,
+        var(--gameboy-color) 62%,
+        var(--gameboy-color) 73%,
+        var(--light-gray) 73%
+    );
+}
+
+.text {
+    font-family: sans-serif;
+    font-size: 10px;
+    text-transform: uppercase;
+    color: var(--gameboy-color);
+}

@@ -13,6 +13,8 @@ A parte "funcional" do Game Boy seria o seu uso, onde o usuário só pode intera
 
 ## Usando o APP
 
+Para usar online acesse: https://game-boy-pokedex.vercel.app/
+
 Para usar localmente, clone o repositório, vá na pasta criada e execute os comandos:
 
 ```

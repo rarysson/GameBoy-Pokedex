@@ -17,6 +17,6 @@ export default {
   height: 600px;
   border-radius: 15px;
   border-bottom-right-radius: 75px;
-  background-color: #c0bdb8;
+  background-color: var(--gameboy-color);
 }
 </style>

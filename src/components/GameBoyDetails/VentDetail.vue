@@ -1,5 +1,5 @@
 <template>
-  <div class="vent-effect">
+  <div class="vent-detail">
     <div class="vent-bar bar-1"></div>
     <div class="vent-bar bar-2"></div>
   </div>
@@ -7,12 +7,12 @@
 
 <script>
 export default {
-  name: "VentEffect"
+  name: "VentDetail"
 };
 </script>
 
 <style scoped>
-.vent-effect {
+.vent-detail {
   position: absolute;
   display: flex;
   bottom: 30px;
