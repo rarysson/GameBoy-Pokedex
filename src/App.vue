@@ -33,13 +33,14 @@ export default {
 </script>
 
 <style scoped>
-@import url("./styles/reset.css");
-@import url("./styles/variables.css");
+@import "./styles/reset.css";
+@import "./styles/variables.css";
 
 #app {
+  min-width: 100%;
   min-height: 100vh;
   display: grid;
   place-items: center;
-  background-color: cadetblue;
+  background-color: cornflowerblue;
 }
 </style>

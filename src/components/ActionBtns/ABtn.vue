@@ -12,9 +12,9 @@ export default {
 </script>
 
 <style scoped>
-@import "../../styles/btn_container.css";
-@import "../../styles/btn_text.css";
-@import "../../styles/action_btns.css";
+@import "~@/styles/btn_container.css";
+@import "~@/styles/btn_text.css";
+@import "~@/styles/action_btns.css";
 
 .btn-container {
   position: relative;

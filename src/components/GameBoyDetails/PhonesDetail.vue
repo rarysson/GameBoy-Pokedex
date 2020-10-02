@@ -11,7 +11,7 @@ export default {
 </script>
 
 <style scoped>
-@import "../../styles/gameboy_details.css";
+@import "~@/styles/gameboy_details.css";
 
 .detail-container {
   bottom: 10px;
