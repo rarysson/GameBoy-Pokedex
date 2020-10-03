@@ -26,7 +26,6 @@ module.exports = {
         "no-inner-declarations": ["error", "both"],
         "no-template-curly-in-string": "error",
         "no-unsafe-negation": ["error", { enforceForOrderingRelations: true }],
-        "require-atomic-updates": "error",
         "accessor-pairs": "error",
         "array-callback-return": "error",
         "block-scoped-var": "error",

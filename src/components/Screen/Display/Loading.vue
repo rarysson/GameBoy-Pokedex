@@ -1,7 +1,7 @@
 <template>
   <transition
     @before-enter="set_data"
-    @before-leave="reset_data"
+    @before-leave="unset_data"
     :duration="900"
   >
     <div class="loading-container" v-if="loading">
@@ -47,7 +47,7 @@ export default {
       }, 1100);
     },
 
-    reset_data() {
+    unset_data() {
       this.is_loading = false;
       this.$refs.top_pokeball.classList.remove("active");
       this.$refs.top_pokeball.classList.add("top-pokeball-leave");
