@@ -4,6 +4,7 @@
       v-for="(pokemon, index) in pokemons"
       :key="index"
       :pokemon="pokemon"
+      @click="$emit('click', $event)"
     />
   </div>
 </template>
