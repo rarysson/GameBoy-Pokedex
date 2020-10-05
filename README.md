@@ -21,3 +21,16 @@ Para usar localmente, clone o repositório, vá na pasta criada e execute os com
 npm install
 npm run serve
 ```
+
+Com o APP aberto, você terá que usar a interface do Game Boy para interagir. O significado dos botões da interface segue abaixo:
+
+| Botão       | Significado            | Atalho no teclado |
+| :---------- | :--------------------- | :---------------- |
+| D-Pad UP    | Move para cima         | ARROW UP          |
+| D-Pad DOWN  | Move para baixo        | ARROW DOWN        |
+| D-Pad LEFT  | Move para esquerda     | ARROW LEFT        |
+| D-Pad RIGHT | Move para direita      | ARROW RIGHT       |
+| B           | Ação de voltar         | Z                 |
+| A           | Ação de selecionar     | X                 |
+| START       | Ação de start do menu  | ENTER             |
+| SELECT      | Ação de select do menu | SHIFT             |

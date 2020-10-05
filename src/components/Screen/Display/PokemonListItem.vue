@@ -1,5 +1,5 @@
 <template>
-  <div class="pli-container" @click="clicked">
+  <div class="pli-container">
     <img class="pokemon-img" :src="pokemon.img" alt="" width="50" height="50" />
 
     <div class="pokemon-data">
@@ -30,12 +30,6 @@ export default {
 
   components: {
     TypeTag
-  },
-
-  methods: {
-    clicked() {
-      this.$emit("click", this.pokemon.name);
-    }
   }
 };
 </script>
@@ -46,10 +40,6 @@ export default {
   height: 50px;
   display: flex;
   background-color: whitesmoke;
-}
-
-.pli-container:hover {
-  border: 2px solid black;
 }
 
 .pli-container:nth-child(even) {

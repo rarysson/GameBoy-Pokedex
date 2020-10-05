@@ -6,12 +6,12 @@
       :name="current_pokemon"
       @fetching-data="loading = true"
       @data-fetched="loading = false"
-      @click="set_pokemon"
     />
   </div>
 </template>
 
 <script>
+import { event_bus } from "@/util/event_bus";
 import Loading from "./Display/Loading";
 import Pokedex from "./Display/Pokedex";
 import Pokemon from "./Display/Pokemon";
@@ -32,6 +32,26 @@ export default {
       current_component: "pokedex",
       bg_color: "var(--green)"
     };
+  },
+
+  created() {
+    event_bus.$on("return", () => {
+      if (this.current_component === "pokemon") {
+        this.current_component = "pokedex";
+      }
+    });
+
+    event_bus.$on("select", () => {
+      event_bus.$emit("get_pokemon");
+
+      if (this.current_component === "pokedex") {
+        this.current_component = "pokemon";
+      }
+    });
+
+    event_bus.$on("pokemon_selected", (name) => {
+      this.current_pokemon = name;
+    });
   },
 
   methods: {

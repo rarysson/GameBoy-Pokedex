@@ -1,13 +1,21 @@
 <template>
   <div class="btn-container">
-    <button class="action-btn"></button>
+    <button class="action-btn" @click="select_action"></button>
     <p class="btn-text">A</p>
   </div>
 </template>
 
 <script>
+import { event_bus } from "@/util/event_bus";
+
 export default {
-  name: "ABtn"
+  name: "ABtn",
+
+  methods: {
+    select_action() {
+      event_bus.$emit("select");
+    }
+  }
 };
 </script>
 

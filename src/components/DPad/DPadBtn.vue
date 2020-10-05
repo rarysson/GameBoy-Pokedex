@@ -1,5 +1,5 @@
 <template>
-  <button class="d-pad-btn"></button>
+  <button class="d-pad-btn" @click="$emit('click')"></button>
 </template>
 
 <script>
