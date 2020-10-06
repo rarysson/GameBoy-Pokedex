@@ -35,36 +35,9 @@ export default {
   },
 
   created() {
-    event_bus.$on("up", () => {
-      if (this.current_index > 0) {
-        this.current_index--;
-
-        this.scroll_to_current_child();
-      }
-    });
-
-    event_bus.$on("down", async () => {
-      if (this.current_index < this.max_index) {
-        this.current_index++;
-
-        this.scroll_to_current_child();
-
-        if (this.current_index + 4 >= this.max_index) {
-          const response = await get_next_pokemons();
-
-          if (Object.keys(response).length > 0) {
-            this.pokemons = { ...this.pokemons, ...response };
-            this.max_index = Object.keys(this.pokemons).length - 1;
-          }
-        }
-      }
-    });
-
-    event_bus.$on("get_pokemon", () => {
-      const current_pokemon = Object.keys(this.pokemons)[this.current_index];
-
-      event_bus.$emit("pokemon_selected", this.pokemons[current_pokemon].name);
-    });
+    event_bus.$on("up", this.handle_up_event);
+    event_bus.$on("down", this.handle_down_event);
+    event_bus.$on("get_pokemon", this.handle_get_pokemon_event);
   },
 
   async mounted() {
@@ -88,6 +61,12 @@ export default {
     }
   },
 
+  beforeDestroy() {
+    event_bus.$off("up", this.handle_up_event);
+    event_bus.$off("down", this.handle_down_event);
+    event_bus.$off("get_pokemon", this.handle_get_pokemon_event);
+  },
+
   methods: {
     scroll_to_current_child() {
       const child = this.$el.children[this.current_index];
@@ -95,6 +74,37 @@ export default {
       if (child) {
         this.$el.scrollTo(0, child.offsetTop - child.offsetHeight);
       }
+    },
+
+    handle_up_event() {
+      if (this.current_index > 0) {
+        this.current_index--;
+
+        this.scroll_to_current_child();
+      }
+    },
+
+    async handle_down_event() {
+      if (this.current_index < this.max_index) {
+        this.current_index++;
+
+        this.scroll_to_current_child();
+
+        if (this.current_index + 4 >= this.max_index) {
+          const response = await get_next_pokemons();
+
+          if (Object.keys(response).length > 0) {
+            this.pokemons = { ...this.pokemons, ...response };
+            this.max_index = Object.keys(this.pokemons).length - 1;
+          }
+        }
+      }
+    },
+
+    handle_get_pokemon_event() {
+      const current_pokemon = Object.keys(this.pokemons)[this.current_index];
+
+      event_bus.$emit("pokemon_selected", this.pokemons[current_pokemon].name);
     }
   }
 };

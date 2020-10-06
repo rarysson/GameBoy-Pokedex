@@ -37,23 +37,15 @@ export default {
   },
 
   created() {
-    event_bus.$on("return", () => {
-      if (this.current_component === "pokemon") {
-        this.current_component = "pokedex";
-      }
-    });
+    event_bus.$on("return", this.handle_return_event);
+    event_bus.$on("confirm", this.handle_confirm_event);
+    event_bus.$on("pokemon_selected", this.handle_pokemon_selected_event);
+  },
 
-    event_bus.$on("select", () => {
-      event_bus.$emit("get_pokemon");
-
-      if (this.current_component === "pokedex") {
-        this.current_component = "pokemon";
-      }
-    });
-
-    event_bus.$on("pokemon_selected", (name) => {
-      this.current_pokemon = name;
-    });
+  beforeDestroy() {
+    event_bus.$off("return", this.handle_return_event);
+    event_bus.$off("select", this.handle_confirm_event);
+    event_bus.$off("pokemon_selected", this.handle_pokemon_selected_event);
   },
 
   methods: {
@@ -61,6 +53,24 @@ export default {
       this.current_pokemon = data;
       this.current_component = "pokemon";
       this.bg_color = "white";
+    },
+
+    handle_return_event() {
+      if (this.current_component === "pokemon") {
+        this.current_component = "pokedex";
+      }
+    },
+
+    handle_confirm_event() {
+      event_bus.$emit("get_pokemon");
+
+      if (this.current_component === "pokedex") {
+        this.current_component = "pokemon";
+      }
+    },
+
+    handle_pokemon_selected_event(name) {
+      this.current_pokemon = name;
     }
   }
 };

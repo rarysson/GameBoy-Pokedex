@@ -21,6 +21,14 @@ export default {
     DPadCenter
   },
 
+  created() {
+    window.addEventListener("keyup", this.handle_keyboard);
+  },
+
+  beforeDestroy() {
+    window.removeEventListener("keyup", this.handle_keyboard);
+  },
+
   methods: {
     up_action() {
       event_bus.$emit("up");
@@ -36,6 +44,25 @@ export default {
 
     right_action() {
       event_bus.$emit("right");
+    },
+
+    handle_keyboard({ key }) {
+      switch (key) {
+        case "ArrowUp":
+          this.up_action();
+          break;
+        case "ArrowDown":
+          this.down_action();
+          break;
+        case "ArrowLeft":
+          this.left_action();
+          break;
+        case "ArrowRight":
+          this.right_action();
+          break;
+        default:
+          break;
+      }
     }
   }
 };

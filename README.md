@@ -22,7 +22,9 @@ npm install
 npm run serve
 ```
 
-Com o APP aberto, você terá que usar a interface do Game Boy para interagir. O significado dos botões da interface segue abaixo:
+Com o APP aberto, você terá que usar a interface do Game Boy ou o teclado para interagir.
+
+O significado dos botões da interface segue abaixo na tabela:
 
 | Botão       | Significado            | Atalho no teclado |
 | :---------- | :--------------------- | :---------------- |
@@ -30,7 +32,7 @@ Com o APP aberto, você terá que usar a interface do Game Boy para interagir. O
 | D-Pad DOWN  | Move para baixo        | ARROW DOWN        |
 | D-Pad LEFT  | Move para esquerda     | ARROW LEFT        |
 | D-Pad RIGHT | Move para direita      | ARROW RIGHT       |
-| B           | Ação de voltar         | Z                 |
-| A           | Ação de selecionar     | X                 |
+| B           | Ação de voltar         | z                 |
+| A           | Ação de selecionar     | x                 |
 | START       | Ação de start do menu  | ENTER             |
 | SELECT      | Ação de select do menu | SHIFT             |

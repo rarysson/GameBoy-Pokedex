@@ -1,6 +1,6 @@
 <template>
   <div class="btn-container">
-    <button class="action-btn" @click="select_action"></button>
+    <button class="action-btn" @click="confirm_action"></button>
     <p class="btn-text">A</p>
   </div>
 </template>
@@ -11,9 +11,23 @@ import { event_bus } from "@/util/event_bus";
 export default {
   name: "ABtn",
 
+  created() {
+    window.addEventListener("keyup", this.handle_keyboard);
+  },
+
+  beforeDestroy() {
+    window.removeEventListener("keyup", this.handle_keyboard);
+  },
+
   methods: {
-    select_action() {
-      event_bus.$emit("select");
+    confirm_action() {
+      event_bus.$emit("confirm");
+    },
+
+    handle_keyboard({ key }) {
+      if (key === "x" || key === "X") {
+        this.confirm_action();
+      }
     }
   }
 };

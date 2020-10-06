@@ -1,13 +1,35 @@
 <template>
   <div class="btn-container">
-    <button class="menu-btn"></button>
+    <button class="menu-btn" @click="start_action"></button>
     <p class="btn-text">Start</p>
   </div>
 </template>
 
 <script>
+import { event_bus } from "@/util/event_bus";
+
 export default {
-  name: "StartBtn"
+  name: "StartBtn",
+
+  created() {
+    window.addEventListener("keyup", this.handle_keyboard);
+  },
+
+  beforeDestroy() {
+    window.removeEventListener("keyup", this.handle_keyboard);
+  },
+
+  methods: {
+    start_action() {
+      event_bus.$emit("start");
+    },
+
+    handle_keyboard({ key }) {
+      if (key === "Enter") {
+        this.start_action();
+      }
+    }
+  }
 };
 </script>
 
