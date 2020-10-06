@@ -52,13 +52,13 @@ export default {
 
   activated() {
     if (this.$el.children.length !== 0) {
-      this.scroll_behavior = "auto";
       this.scroll_to_current_child();
-
-      setTimeout(() => {
-        this.scroll_behavior = "smooth";
-      }, 100);
+      this.scroll_behavior = "smooth";
     }
+  },
+
+  deactivated() {
+    this.scroll_behavior = "auto";
   },
 
   beforeDestroy() {
