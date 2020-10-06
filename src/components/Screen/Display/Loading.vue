@@ -1,22 +1,9 @@
 <template>
-  <transition
-    @before-enter="set_data"
-    @before-leave="unset_data"
-    :duration="900"
-  >
-    <div class="loading-container" v-if="loading">
-      <div
-        class="top-pokeball"
-        :class="is_loading ? 'active' : ''"
-        ref="top_pokeball"
-      ></div>
-      <div
-        class="bottom-pokeball"
-        :class="is_loading ? 'active' : ''"
-        ref="bottom_pokeball"
-      ></div>
-    </div>
-  </transition>
+  <div class="loading-container" :style="{ zIndex: z_index }">
+    <div :class="top_classes" ref="top_pokeball"></div>
+    <div :class="inner_top_classes"></div>
+    <div :class="bottom_classes"></div>
+  </div>
 </template>
 
 <script>
@@ -32,27 +19,95 @@ export default {
 
   data() {
     return {
-      is_loading: false
+      is_loading: false,
+      entering: false,
+      enter_animation_ended: false,
+      leave_animation_started: false,
+      z_index: -1
     };
   },
 
   mounted() {
-    this.set_data();
+    this.$refs.top_pokeball.addEventListener(
+      "animationend",
+      this.handle_enter_animation_event
+    );
+
+    this.$refs.top_pokeball.addEventListener(
+      "animationstart",
+      this.handle_leave_animation_event
+    );
+
+    this.is_loading = this.loading;
+  },
+
+  beforeDestroy() {
+    this.$refs.top_pokeball.removeEventListener(
+      "animationend",
+      this.handle_enter_animation_event
+    );
+
+    this.$refs.top_pokeball.removeEventListener(
+      "animationstart",
+      this.handle_leave_animation_event
+    );
+  },
+
+  watch: {
+    loading(val) {
+      this.is_loading = val;
+    }
+  },
+
+  computed: {
+    top_classes() {
+      return [
+        "top-pokeball",
+        this.is_loading ? "top-pokeball-enter" : "top-pokeball-leave",
+        this.enter_animation_ended && !this.leave_animation_started
+          ? "active"
+          : ""
+      ];
+    },
+
+    inner_top_classes() {
+      return [
+        "inner-top-pokeball",
+        this.is_loading
+          ? "inner-top-pokeball-enter"
+          : "inner-top-pokeball-leave",
+        this.enter_animation_ended ? "active" : ""
+      ];
+    },
+
+    bottom_classes() {
+      return [
+        "bottom-pokeball",
+        this.is_loading ? "bottom-pokeball-enter" : "bottom-pokeball-leave",
+        this.enter_animation_ended && !this.leave_animation_started
+          ? "active"
+          : ""
+      ];
+    }
   },
 
   methods: {
-    set_data() {
-      setTimeout(() => {
-        this.is_loading = true;
-      }, 1100);
+    handle_enter_animation_event({ animationName }) {
+      if (animationName.includes("going-down")) {
+        this.enter_animation_ended = true;
+      } else if (animationName.includes("going-up-from-down")) {
+        this.leave_animation_started = false;
+        this.z_index = -1;
+      }
     },
 
-    unset_data() {
-      this.is_loading = false;
-      this.$refs.top_pokeball.classList.remove("active");
-      this.$refs.top_pokeball.classList.add("top-pokeball-leave");
-      this.$refs.bottom_pokeball.classList.remove("active");
-      this.$refs.bottom_pokeball.classList.add("bottom-pokeball-leave");
+    handle_leave_animation_event({ animationName }) {
+      if (animationName.includes("going-up-from-down")) {
+        this.leave_animation_started = true;
+        this.enter_animation_ended = false;
+      } else if (animationName.includes("going-down")) {
+        this.z_index = 9;
+      }
     }
   }
 };
@@ -60,6 +115,7 @@ export default {
 
 <style scoped>
 .loading-container {
+  position: relative;
   width: 100%;
   height: 100%;
   overflow: hidden;
@@ -77,11 +133,11 @@ export default {
 }
 
 .top-pokeball {
-  animation: going-down 1s;
+  z-index: 99;
 }
 
-.top-pokeball-leave {
-  animation: going-up-from-down 1s;
+.top-pokeball-enter {
+  animation: going-down 1s forwards;
 }
 
 @keyframes going-down {
@@ -90,10 +146,12 @@ export default {
   }
 
   to {
-    position: relative;
-    z-index: 99;
     transform: translateY(0);
   }
+}
+
+.top-pokeball-leave {
+  animation: going-up-from-down 1s forwards;
 }
 
 @keyframes going-up-from-down {
@@ -102,18 +160,12 @@ export default {
   }
 
   to {
-    position: relative;
-    z-index: 99;
-    transform: translateY(-100%);
+    transform: translateY(-150%);
   }
 }
 
-.bottom-pokeball {
+.bottom-pokeball-enter {
   animation: going-up 1s;
-}
-
-.bottom-pokeball-leave {
-  animation: going-down-from-up 1s;
 }
 
 @keyframes going-up {
@@ -126,13 +178,17 @@ export default {
   }
 }
 
+.bottom-pokeball-leave {
+  animation: going-down-from-up 1s forwards;
+}
+
 @keyframes going-down-from-up {
   from {
     transform: translateY(0);
   }
 
   to {
-    transform: translateY(100%);
+    transform: translateY(150%);
   }
 }
 
@@ -140,6 +196,7 @@ export default {
 .bottom-pokeball::before {
   content: "";
   position: absolute;
+  z-index: 99;
   left: calc(50% - calc(var(--pokeball-width) / 2));
   width: var(--pokeball-width);
   height: var(--pokeball-height);
@@ -148,7 +205,6 @@ export default {
 
 .top-pokeball::before {
   bottom: 0;
-  z-index: 99;
   background-color: crimson;
   border-top-left-radius: var(--pokeball-height);
   border-top-right-radius: var(--pokeball-height);
@@ -212,7 +268,7 @@ export default {
   }
 }
 
-.top-pokeball::after,
+.inner-top-pokeball,
 .bottom-pokeball::after {
   content: "";
   position: absolute;
@@ -220,17 +276,44 @@ export default {
   width: calc(var(--pokeball-width) / 4);
 }
 
-.top-pokeball::after {
-  bottom: 0;
-  z-index: 99;
+.inner-top-pokeball {
+  top: 42%;
+  z-index: 999;
   height: calc(var(--pokeball-width) / 4);
   border: calc(var(--border-width) * 2) solid black;
   border-radius: 100%;
   background-color: white;
-  translate: 0 50%;
 }
 
-.top-pokeball.active::after {
+.inner-top-pokeball-enter {
+  animation: going-down-inner 1s forwards;
+}
+
+@keyframes going-down-inner {
+  from {
+    transform: translateY(-350%);
+  }
+
+  to {
+    transform: translateY(0%);
+  }
+}
+
+.inner-top-pokeball-leave {
+  animation: going-up-from-down-inner 1s forwards;
+}
+
+@keyframes going-up-from-down-inner {
+  from {
+    transform: translateY(0%);
+  }
+
+  to {
+    transform: translateY(-500%);
+  }
+}
+
+.inner-top-pokeball.active {
   animation: shake-inner 1.5s infinite;
 }
 

@@ -76,8 +76,16 @@ async function get_pokemons() {
 async function get_pokemon_description(name) {
     const response = await API.get(`pokemon-species/${name}/`);
     const data = response.data;
+    let description;
 
-    return data.flavor_text_entries[0].flavor_text;
+    for (let i = 0; ; i++) {
+        if (data.flavor_text_entries[i].language.name === "en") {
+            description = data.flavor_text_entries[i].flavor_text;
+            break;
+        }
+    }
+
+    return description.replace(/[^\w ,.é]/g, "");
 }
 
 async function get_pokemon(name) {

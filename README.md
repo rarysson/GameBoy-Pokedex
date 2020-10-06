@@ -1,6 +1,6 @@
 # Game Boy Pokedex
 
-Implementação de uma Pokédex num Game Boy "de verdade".
+Implementação de uma Pokédex num Game Boy.
 
 A ideia desse projeto é conseguir criar somente com CSS um Game Boy "funcional". Onde na tela será mostrado uma lista de Pokémons simulando uma Pokédex.
 
@@ -26,13 +26,17 @@ Com o APP aberto, você terá que usar a interface do Game Boy ou o teclado para
 
 O significado dos botões da interface segue abaixo na tabela:
 
-| Botão       | Significado            | Atalho no teclado |
-| :---------- | :--------------------- | :---------------- |
-| D-Pad UP    | Move para cima         | ARROW UP          |
-| D-Pad DOWN  | Move para baixo        | ARROW DOWN        |
-| D-Pad LEFT  | Move para esquerda     | ARROW LEFT        |
-| D-Pad RIGHT | Move para direita      | ARROW RIGHT       |
-| B           | Ação de voltar         | z                 |
-| A           | Ação de selecionar     | x                 |
-| START       | Ação de start do menu  | ENTER             |
-| SELECT      | Ação de select do menu | SHIFT             |
+| Botão       | Atalho no teclado | Significado            |
+| :---------- | :---------------- | :--------------------- |
+| D-Pad UP    | ↑                 | Move para cima         |
+| D-Pad DOWN  | ↓                 | Move para baixo        |
+| D-Pad LEFT  | ←                 | Move para esquerda     |
+| D-Pad RIGHT | →                 | Move para direita      |
+| B           | z                 | Ação de voltar         |
+| A           | x                 | Ação de confirmar      |
+| START       | ENTER             | Ação de start do menu  |
+| SELECT      | SHIFT             | Ação de select do menu |
+
+## Licença
+
+Esse projeto está sob a [licença MIT](LICENSE).

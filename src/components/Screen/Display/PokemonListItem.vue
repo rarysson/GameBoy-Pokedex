@@ -53,6 +53,7 @@ export default {
 .pokemon-data {
   display: flex;
   flex-wrap: wrap;
+  align-content: space-around;
   padding-bottom: 5px;
 }
 

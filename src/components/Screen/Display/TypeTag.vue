@@ -22,6 +22,7 @@ export default {
   text-align: center;
   color: white;
   width: 50px;
+  margin: auto 0;
 }
 
 .normal {

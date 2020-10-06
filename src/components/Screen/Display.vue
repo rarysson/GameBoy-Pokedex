@@ -49,12 +49,6 @@ export default {
   },
 
   methods: {
-    set_pokemon(data) {
-      this.current_pokemon = data;
-      this.current_component = "pokemon";
-      this.bg_color = "white";
-    },
-
     handle_return_event() {
       if (this.current_component === "pokemon") {
         this.current_component = "pokedex";
@@ -71,6 +65,7 @@ export default {
 
     handle_pokemon_selected_event(name) {
       this.current_pokemon = name;
+      this.bg_color = "white";
     }
   }
 };
