@@ -1,17 +1,20 @@
 <template>
-  <div class="pokedex-container" :style="{ backgroundColor: bg_color }">
+  <div
+    class="pokedex-container"
+    :style="{ backgroundColor: bg_color, scrollBehavior: scroll_behavior }"
+  >
     <pokemon-list-item
       v-for="pokemon in pokemons"
       :key="pokemon.id"
       :pokemon="pokemon"
-      :class="{ focus: pokemon.id === current_id }"
+      :class="{ focus: pokemon.id === current_index + 1 }"
     />
   </div>
 </template>
 
 <script>
 import { event_bus } from "@/util/event_bus";
-import { get_pokemons } from "@/util/api";
+import { get_pokemons, get_next_pokemons } from "@/util/api";
 import PokemonListItem from "./PokemonListItem";
 
 export default {
@@ -25,35 +28,42 @@ export default {
     return {
       pokemons: [],
       bg_color: "transparent",
-      current_id: 0,
-      max_id: 0
+      scroll_behavior: "smooth",
+      current_index: null,
+      max_index: null
     };
   },
 
   created() {
     event_bus.$on("up", () => {
-      if (this.current_id > 1) {
-        this.current_id--;
+      if (this.current_index > 0) {
+        this.current_index--;
 
-        const child = this.$el.children[this.current_id - 1];
-        this.$el.scrollTo(0, child.offsetTop - child.offsetHeight);
+        this.scroll_to_current_child();
       }
     });
 
-    event_bus.$on("down", () => {
-      if (this.current_id < this.max_id) {
-        this.current_id++;
+    event_bus.$on("down", async () => {
+      if (this.current_index < this.max_index) {
+        this.current_index++;
 
-        const child = this.$el.children[this.current_id - 1];
-        this.$el.scrollTo(0, child.offsetTop - child.offsetHeight);
+        this.scroll_to_current_child();
+
+        if (this.current_index + 4 >= this.max_index) {
+          const response = await get_next_pokemons();
+
+          if (Object.keys(response).length > 0) {
+            this.pokemons = { ...this.pokemons, ...response };
+            this.max_index = Object.keys(this.pokemons).length - 1;
+          }
+        }
       }
     });
 
     event_bus.$on("get_pokemon", () => {
-      event_bus.$emit(
-        "pokemon_selected",
-        this.pokemons[this.current_id - 1].name
-      );
+      const current_pokemon = Object.keys(this.pokemons)[this.current_index];
+
+      event_bus.$emit("pokemon_selected", this.pokemons[current_pokemon].name);
     });
   },
 
@@ -61,10 +71,31 @@ export default {
     this.$emit("fetching-data");
     this.bg_color = "transparent";
     this.pokemons = await get_pokemons();
-    this.current_id = this.pokemons[0].id;
-    this.max_id = this.pokemons.length;
+    this.current_index = this.current_index ?? 0;
+    this.max_index = this.max_index ?? Object.keys(this.pokemons).length - 1;
     this.bg_color = "white";
     this.$emit("data-fetched");
+  },
+
+  activated() {
+    if (this.$el.children.length !== 0) {
+      this.scroll_behavior = "auto";
+      this.scroll_to_current_child();
+
+      setTimeout(() => {
+        this.scroll_behavior = "smooth";
+      }, 100);
+    }
+  },
+
+  methods: {
+    scroll_to_current_child() {
+      const child = this.$el.children[this.current_index];
+
+      if (child) {
+        this.$el.scrollTo(0, child.offsetTop - child.offsetHeight);
+      }
+    }
   }
 };
 </script>
@@ -74,7 +105,6 @@ export default {
   width: 100%;
   height: 100%;
   overflow: hidden;
-  scroll-behavior: smooth;
 }
 
 .focus {

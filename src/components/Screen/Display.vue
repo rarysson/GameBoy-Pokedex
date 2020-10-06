@@ -1,12 +1,14 @@
 <template>
   <div class="display-container" :style="{ backgroundColor: bg_color }">
     <loading class="loading" :loading="loading" />
-    <component
-      :is="current_component"
-      :name="current_pokemon"
-      @fetching-data="loading = true"
-      @data-fetched="loading = false"
-    />
+    <keep-alive include="Pokedex">
+      <component
+        :is="current_component"
+        :name="current_pokemon"
+        @fetching-data="loading = true"
+        @data-fetched="loading = false"
+      />
+    </keep-alive>
   </div>
 </template>
 
