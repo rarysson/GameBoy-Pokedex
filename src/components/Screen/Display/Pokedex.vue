@@ -30,7 +30,8 @@ export default {
       bg_color: "transparent",
       scroll_behavior: "smooth",
       current_index: null,
-      max_index: null
+      max_index: null,
+      shiny: false
     };
   },
 
@@ -38,9 +39,11 @@ export default {
     event_bus.$on("up", this.handle_up_event);
     event_bus.$on("down", this.handle_down_event);
     event_bus.$on("get_pokemon", this.handle_get_pokemon_event);
+    event_bus.$on("shiny-mode", this.handle_shiny_event);
   },
 
   async mounted() {
+    this.$el.scrollTo(0, 0);
     this.$emit("fetching-data");
     this.bg_color = "transparent";
     this.pokemons = await get_pokemons();
@@ -65,6 +68,7 @@ export default {
     event_bus.$off("up", this.handle_up_event);
     event_bus.$off("down", this.handle_down_event);
     event_bus.$off("get_pokemon", this.handle_get_pokemon_event);
+    event_bus.$off("shiny-mode", this.handle_shiny_event);
   },
 
   methods: {
@@ -94,6 +98,17 @@ export default {
           const response = await get_next_pokemons();
 
           if (Object.keys(response).length > 0) {
+            if (this.shiny) {
+              for (const key in response) {
+                const pokemon = response[key];
+
+                [pokemon.img, pokemon.img_shiny] = [
+                  pokemon.img_shiny,
+                  pokemon.img
+                ];
+              }
+            }
+
             this.pokemons = { ...this.pokemons, ...response };
             this.max_index = Object.keys(this.pokemons).length - 1;
           }
@@ -105,6 +120,10 @@ export default {
       const current_pokemon = Object.keys(this.pokemons)[this.current_index];
 
       event_bus.$emit("pokemon_selected", this.pokemons[current_pokemon].name);
+    },
+
+    handle_shiny_event() {
+      this.shiny = !this.shiny;
     }
   }
 };

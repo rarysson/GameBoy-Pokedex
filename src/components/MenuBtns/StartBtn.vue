@@ -21,7 +21,7 @@ export default {
 
   methods: {
     start_action() {
-      event_bus.$emit("start");
+      event_bus.$emit("start", "start");
     },
 
     handle_keyboard({ key }) {

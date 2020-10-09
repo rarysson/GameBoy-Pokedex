@@ -31,19 +31,19 @@ export default {
 
   methods: {
     up_action() {
-      event_bus.$emit("up");
+      event_bus.$emit("up", "up");
     },
 
     down_action() {
-      event_bus.$emit("down");
+      event_bus.$emit("down", "down");
     },
 
     left_action() {
-      event_bus.$emit("left");
+      event_bus.$emit("left", "left");
     },
 
     right_action() {
-      event_bus.$emit("right");
+      event_bus.$emit("right", "right");
     },
 
     handle_keyboard({ key }) {

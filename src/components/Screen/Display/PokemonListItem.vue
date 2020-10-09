@@ -16,6 +16,7 @@
 </template>
 
 <script>
+import { event_bus } from "@/util/event_bus";
 import TypeTag from "./TypeTag";
 
 export default {
@@ -30,6 +31,23 @@ export default {
 
   components: {
     TypeTag
+  },
+
+  created() {
+    event_bus.$on("shiny-mode", this.change_img);
+  },
+
+  beforeDestroy() {
+    event_bus.$off("shiny-mode", this.change_img);
+  },
+
+  methods: {
+    change_img() {
+      [this.pokemon.img, this.pokemon.img_shiny] = [
+        this.pokemon.img_shiny,
+        this.pokemon.img
+      ];
+    }
   }
 };
 </script>

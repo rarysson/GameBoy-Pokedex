@@ -1,6 +1,6 @@
 <template>
   <div class="btn-container">
-    <button class="action-btn" @click="confirm_action"></button>
+    <button class="action-btn" @click="a_action"></button>
     <p class="btn-text">A</p>
   </div>
 </template>
@@ -20,13 +20,13 @@ export default {
   },
 
   methods: {
-    confirm_action() {
-      event_bus.$emit("confirm");
+    a_action() {
+      event_bus.$emit("a", "a");
     },
 
     handle_keyboard({ key }) {
       if (key === "x" || key === "X") {
-        this.confirm_action();
+        this.a_action();
       }
     }
   }

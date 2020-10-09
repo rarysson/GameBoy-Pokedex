@@ -37,25 +37,25 @@ export default {
   },
 
   created() {
-    event_bus.$on("return", this.handle_return_event);
-    event_bus.$on("confirm", this.handle_confirm_event);
+    event_bus.$on("b", this.handle_b_event);
+    event_bus.$on("a", this.handle_a_event);
     event_bus.$on("pokemon_selected", this.handle_pokemon_selected_event);
   },
 
   beforeDestroy() {
-    event_bus.$off("return", this.handle_return_event);
-    event_bus.$off("select", this.handle_confirm_event);
+    event_bus.$off("b", this.handle_b_event);
+    event_bus.$off("select", this.handle_a_event);
     event_bus.$off("pokemon_selected", this.handle_pokemon_selected_event);
   },
 
   methods: {
-    handle_return_event() {
+    handle_b_event() {
       if (this.current_component === "pokemon") {
         this.current_component = "pokedex";
       }
     },
 
-    handle_confirm_event() {
+    handle_a_event() {
       event_bus.$emit("get_pokemon");
 
       if (this.current_component === "pokedex") {

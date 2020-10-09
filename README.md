@@ -37,6 +37,12 @@ O significado dos botões da interface segue abaixo na tabela:
 | START       | ENTER             | Ação de start do menu  |
 | SELECT      | SHIFT             | Ação de select do menu |
 
+### Modo secreto
+
+Para ativar/desativar o modo secreto primeiro aperte `SELECT`, depois aperte:
+
+`↑ ↑ ↓ ↓ ← → ← → B A`
+
 ## Licença
 
 Esse projeto está sob a [licença MIT](LICENSE).

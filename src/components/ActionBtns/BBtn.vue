@@ -1,6 +1,6 @@
 <template>
   <div class="btn-container">
-    <button class="action-btn" @click="return_action"></button>
+    <button class="action-btn" @click="b_action"></button>
     <p class="btn-text">B</p>
   </div>
 </template>
@@ -20,13 +20,13 @@ export default {
   },
 
   methods: {
-    return_action() {
-      event_bus.$emit("return");
+    b_action() {
+      event_bus.$emit("b", "b");
     },
 
     handle_keyboard({ key }) {
       if (key === "z" || key === "Z") {
-        this.return_action();
+        this.b_action();
       }
     }
   }

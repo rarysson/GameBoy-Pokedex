@@ -21,7 +21,7 @@ export default {
 
   methods: {
     select_action() {
-      event_bus.$emit("select");
+      event_bus.$emit("select", "select");
     },
 
     handle_keyboard({ key }) {

@@ -1,6 +1,8 @@
 <template>
   <div class="text-container">
-    <p class="text">dot matrix with stereo soround</p>
+    <div class="text-wrapper">
+      <p class="text">dot matrix with stereo soround</p>
+    </div>
   </div>
 </template>
 
@@ -25,15 +27,18 @@ export default {
   );
 }
 
+.text-wrapper {
+  width: fit-content;
+  margin-left: 30%;
+  background-color: var(--dark-gray);
+}
+
 .text {
   width: max-content;
   font-family: sans-serif;
   font-size: 8px;
   text-transform: uppercase;
-  text-align: right;
   padding: 0 7px;
-  margin-left: 30%;
   color: darkgray;
-  background-color: var(--dark-gray);
 }
 </style>
