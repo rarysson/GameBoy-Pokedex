@@ -1,10 +1,10 @@
 <template>
   <div class="d-pad-container">
-    <d-pad-btn class="btn-up" @click="up_action" />
-    <d-pad-btn class="btn-down" @click="down_action" />
-    <d-pad-btn class="btn-left" @click="left_action" />
-    <d-pad-btn class="btn-right" @click="right_action" />
-    <d-pad-center class="center" />
+    <d-pad-btn class="up-btn" @click="up_action" />
+    <d-pad-btn class="down-btn" @click="down_action" />
+    <d-pad-btn class="left-btn" @click="left_action" />
+    <d-pad-btn class="right-btn" @click="right_action" />
+    <d-pad-center class="center-detail" />
   </div>
 </template>
 
@@ -82,26 +82,26 @@ export default {
     ". down .";
 }
 
-.btn-up {
+.up-btn {
   grid-area: up;
   transform: rotate(180deg);
 }
 
-.btn-down {
+.down-btn {
   grid-area: down;
 }
 
-.btn-left {
+.left-btn {
   grid-area: left;
   transform: rotate(90deg);
 }
 
-.btn-right {
+.right-btn {
   grid-area: right;
   transform: rotate(-90deg);
 }
 
-.center {
+.center-detail {
   grid-area: center;
 }
 </style>

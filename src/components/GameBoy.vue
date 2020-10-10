@@ -119,34 +119,6 @@ export default {
   border-bottom-right-radius: 75px;
   background-color: var(--gameboy-color);
 }
-</style>
-
-<style>
-.rainbow-text p:not(.type-tag) {
-  background: linear-gradient(
-    to right,
-    #6666ff,
-    #0099ff,
-    lime,
-    #ff3399,
-    #6666ff
-  );
-  background-clip: text;
-  color: transparent;
-  animation: rainbow-animation 2s;
-  background-size: 400% 100%;
-}
-
-@keyframes rainbow-animation {
-  0%,
-  100% {
-    background-position: 0 0;
-  }
-
-  50% {
-    background-position: 100% 0;
-  }
-}
 
 .color-selector {
   position: relative;
@@ -205,5 +177,33 @@ export default {
 .v-enter,
 .v-leave-to {
   transform: translateX(-150%);
+}
+</style>
+
+<style>
+.rainbow-text p:not(.type-tag) {
+  background: linear-gradient(
+    to right,
+    #6666ff,
+    #0099ff,
+    lime,
+    #ff3399,
+    #6666ff
+  );
+  background-clip: text;
+  color: transparent;
+  animation: rainbow-animation 2s;
+  background-size: 400% 100%;
+}
+
+@keyframes rainbow-animation {
+  0%,
+  100% {
+    background-position: 0 0;
+  }
+
+  50% {
+    background-position: 100% 0;
+  }
 }
 </style>

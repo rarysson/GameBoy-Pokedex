@@ -1,5 +1,5 @@
 <template>
-  <div class="menu-btns">
+  <div>
     <select-btn />
     <start-btn />
   </div>

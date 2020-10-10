@@ -1,5 +1,5 @@
 <template>
-  <div class="center"></div>
+  <div class="d-pad-center"></div>
 </template>
 
 <script>
@@ -9,20 +9,20 @@ export default {
 </script>
 
 <style scoped>
-.center {
+.d-pad-center {
   position: relative;
   width: 30px;
   height: 30px;
   background-color: var(--black);
 }
 
-.center::after {
+.d-pad-center::after {
   content: "";
   position: absolute;
   top: 0;
   left: 0;
-  width: 30px;
-  height: 30px;
+  width: 100%;
+  height: 100%;
   border-radius: 100%;
   background-color: var(--light-black);
 }

@@ -1,5 +1,5 @@
 <template>
-  <div class="action-btns">
+  <div class="action-btns-container">
     <b-btn />
     <a-btn />
   </div>
@@ -20,7 +20,7 @@ export default {
 </script>
 
 <style scoped>
-.action-btns {
+.action-btns-container {
   position: absolute;
   bottom: 30%;
   right: 5%;
