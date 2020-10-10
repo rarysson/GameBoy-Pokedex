@@ -11,6 +11,11 @@
     --dark-gray: #555764;
     --green: #495a14;
     --shadow-color: rgba(125, 125, 125, 0.25);
-    --gameboy-color: #c0bdb8;
+    --gameboy-gray: #c0bdb8;
+    --gameboy-yellow: #ffe429;
+    --gameboy-green: #9bc906;
+    --gameboy-blue: #02b7d4;
+    --gameboy-color: var(--gameboy-gray);
+    --bg-color: cornflowerblue;
     --rotate-value: -27deg;
 }

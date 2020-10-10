@@ -43,6 +43,14 @@ Para ativar/desativar o modo secreto primeiro aperte `SELECT`, depois aperte:
 
 `↑ ↑ ↓ ↓ ← → ← → B A`
 
+### Modo de seleção de cor do Game Boy
+
+Para ativar o modo de seleção de cor aperte `START`.
+
+Para selecionar a cor basta clicar na cor que deseja.
+
+Para desativar o modo de selação de cor aperte a barra lateral que abriu.
+
 ## Licença
 
 Esse projeto está sob a [licença MIT](LICENSE).

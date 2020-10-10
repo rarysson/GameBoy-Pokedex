@@ -37,10 +37,12 @@ export default {
 @import "./styles/variables.css";
 
 #app {
+  position: relative;
+  z-index: 0;
   min-width: 100%;
   min-height: 100vh;
   display: grid;
   place-items: center;
-  background-color: cornflowerblue;
+  background-color: var(--bg-color);
 }
 </style>
