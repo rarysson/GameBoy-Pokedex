@@ -94,14 +94,16 @@ export default {
 
         this.scroll_to_current_child();
 
-        if (this.current_index + 4 >= this.max_index) {
+        if (this.current_index + 5 >= this.max_index) {
           const response = await get_next_pokemons();
 
           if (Object.keys(response).length > 0) {
-            if (this.shiny) {
-              for (const key in response) {
-                const pokemon = response[key];
+            for (const key in response) {
+              const pokemon = response[key];
 
+              this.$set(this.pokemons, pokemon.name, pokemon);
+
+              if (this.shiny) {
                 [pokemon.img, pokemon.img_shiny] = [
                   pokemon.img_shiny,
                   pokemon.img
@@ -109,7 +111,6 @@ export default {
               }
             }
 
-            this.pokemons = { ...this.pokemons, ...response };
             this.max_index = Object.keys(this.pokemons).length - 1;
           }
         }

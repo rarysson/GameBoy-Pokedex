@@ -25,13 +25,13 @@ async function get_pokemon_list() {
     if (local_data.index <= local_data.pokemons_total) {
         const data = [];
         const check_truthy = (i) =>
-            i < local_data.index + 10 && i < local_data.pokemons_total;
+            i < local_data.index + 15 && i < local_data.pokemons_total;
 
         for (let i = local_data.index; check_truthy(i); i++) {
             data.push(API.get(`pokemon/${i}`));
         }
 
-        local_data.index += 10;
+        local_data.index += 15;
 
         return Promise.all(data);
     }
