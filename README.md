@@ -1,56 +1,56 @@
 # Game Boy Pokedex
 
-Implementação de uma Pokédex num Game Boy.
+Implementation of a Pokédex on a Game Boy.
 
-A ideia desse projeto é conseguir criar somente com CSS um Game Boy "funcional". Onde na tela será mostrado uma lista de Pokémons simulando uma Pokédex.
+The idea of this project is to be able to create a "functional" Game Boy with only CSS. Where on the screen will be shown a list of Pokémons simulating a Pokédex.
 
-A parte "funcional" do Game Boy seria o seu uso, onde o usuário só pode interagir com a Pokédex apertando os botões do Game Boy ou através do teclado.
+The "functional" part of the Game Boy would be its use, where the user can only interact with the Pokédex by pressing the Game Boy buttons or using the keyboard.
 
-## Tecnologias utilizadas
+## Stack
 
 * [Vue](https://vuejs.org/)
 * [Axios](https://github.com/axios/axios)
 
-## Usando o APP
+## Using the APP
 
-Para usar online acesse: https://game-boy-pokedex.vercel.app/
+To use right away go here: https://game-boy-pokedex.vercel.app/
 
-Para usar localmente, clone o repositório, vá na pasta criada e execute os comandos:
+To run locally, you need to clone the repo, go to the folder that you've created and type these commands:
 
 ```
 npm install
 npm run serve
 ```
 
-Com o APP aberto, você terá que usar a interface do Game Boy ou o teclado para interagir.
+With the APP open you need to use the button from the Game Boy or your keyboard to interact with.
 
-O significado dos botões da interface segue abaixo na tabela:
+The meaning of the buttons you can see on the table below:
 
-| Botão       | Atalho no teclado | Significado            |
-| :---------- | :---------------- | :--------------------- |
-| D-Pad UP    | ↑                 | Move para cima         |
-| D-Pad DOWN  | ↓                 | Move para baixo        |
-| D-Pad LEFT  | ←                 | Move para esquerda     |
-| D-Pad RIGHT | →                 | Move para direita      |
-| B           | z                 | Ação de voltar         |
-| A           | x                 | Ação de confirmar      |
-| START       | ENTER             | Ação de start do menu  |
-| SELECT      | SHIFT             | Ação de select do menu |
+| Button      | Shortcut | Meaning |
+| :---------- | :------- | :------ |
+| D-Pad UP    | ↑        | Up      |
+| D-Pad DOWN  | ↓        | Down    |
+| D-Pad LEFT  | ←        | Left    |
+| D-Pad RIGHT | →        | Right   |
+| B           | z        | Back    |
+| A           | x        | Confirm |
+| START       | ENTER    | Start   |
+| SELECT      | SHIFT    | Select  |
 
-### Modo secreto
+### Secret mode
 
-Para ativar/desativar o modo secreto primeiro aperte `SELECT`, depois aperte:
+To enable/disable the secret mode, first, you need to press `SELECT` and then press:
 
 `↑ ↑ ↓ ↓ ← → ← → B A`
 
-### Modo de seleção de cor do Game Boy
+### Select a different color for the Game Boy
 
-Para ativar o modo de seleção de cor aperte `START`.
+To enable the color selector mode you need to press `START`.
 
-Para selecionar a cor basta clicar na cor que deseja.
+To select a color just click on the color that you want.
 
-Para desativar o modo de selação de cor aperte a barra lateral que abriu.
+To disable the color selector mode press the sidebar that you've opened.
 
-## Licença
+## License
 
-Esse projeto está sob a [licença MIT](LICENSE).
+[MIT](LICENSE).
